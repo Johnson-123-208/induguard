@@ -338,7 +338,9 @@ function App() {
     let reconnectTimeout: any = null;
 
     const connectWs = () => {
-      const backendUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000';
+      const backendUrl = (
+        import.meta.env.VITE_API_URL || 'https://induguard-api.onrender.com'
+      ).replace(/\/$/, '');
       const wsUrl = backendUrl.replace(/^http/, 'ws') + '/ws/monitoring';
       ws = new WebSocket(wsUrl);
 
